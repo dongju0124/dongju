@@ -22,24 +22,23 @@ int main() {
 		string s;
 		cin >> s;
 		string temp;
-		for (int j = 0; j < s.size(); j++) {
-			if (isdigit(s[j])) {
-				temp += s[j];
+
+		for (int n = 0; n < s.size(); n++) {
+			if (isdigit(s[n])) {
+				temp += s[n];
 			}
 			else {
-				//수가 존재할 때
 				if (temp != "") {
 					dq.push_back(stoi(temp));
 					temp = "";
 				}
 			}
 		}
-
 		int error_check = 0;
 
-		int r = 0; // r이 홀수면 거꾸로, r이 짝수면 그대로
-		for (int j = 0; j < func.size(); j++) {
-			if (func[j] == 'R') {
+		int r = 0;
+		for (int n = 0; n < func.size(); n++) {
+			if (func[n] == 'R') {
 				r++;
 			}
 			else {
@@ -48,11 +47,9 @@ int main() {
 					error_check = 1;
 					break;
 				}
-				//짝수 : 가장 앞 버리기
 				if (r % 2 == 0) {
 					dq.pop_front();
 				}
-				//홀수 : 가장 뒤 버리기
 				else {
 					dq.pop_back();
 				}
@@ -62,17 +59,16 @@ int main() {
 		if (error_check == 0) {
 			cout << "[";
 			if (r % 2 == 1) {
-				//홀수일 때 뒤집어서 출력
-				for (int j = dq.size() - 1; j >= 0; j--) {
-					cout << dq[j];
-					if (j != 0)
+				for (int n = dq.size() - 1; n >= 0; n--) {
+					cout << dq[n];
+					if (n != 0)
 						cout << ",";
 				}
 			}
 			else {
-				for (int j = 0; j < dq.size(); j++) {
-					cout << dq[j];
-					if (j != dq.size() - 1)
+				for (int n = 0; n < dq.size(); n++) {
+					cout << dq[n];
+					if (n != dq.size() - 1)
 						cout << ",";
 				}
 			}
