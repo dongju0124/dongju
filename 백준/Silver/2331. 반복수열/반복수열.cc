@@ -3,9 +3,8 @@
 #include<string>
 
 using namespace std;
-
-string A;
-int P;
+ 
+int A, P;
 
 int num[7];
 int dp[236196];
@@ -20,8 +19,8 @@ void find_num(int cnt, int N)
 		cout << order[N]-1;
 		return;
 	}
-	order[N] = cnt;
 
+	order[N] = cnt;
 	visited[N] = true;
 
 	while (N)
@@ -40,7 +39,7 @@ int main() {
 
 	cin >> A >> P;
 
-	dp[1] = stoi(A);
+	dp[1] = A;
 
 	find_num(1, dp[1]);
 }
