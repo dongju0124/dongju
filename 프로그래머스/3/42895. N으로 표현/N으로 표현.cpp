@@ -8,6 +8,9 @@ int solution(int N, int number) {
     int answer = -1;
     set<int> dp[8];
     
+    if(N==number)
+        return 1;
+    
     int sum=0;
     for(int i= 0; i<8; i++)
     {
@@ -28,15 +31,12 @@ int solution(int N, int number) {
                 }
             }
         }
+        
+        if(dp[i].count(number))
+            return i+1;
     }
     
-    for(int i=0; i<8; i++)
-    {
-        if(dp[i].count(number)){
-            answer = i+1;
-            break;
-        }
-    }
+
     
     return answer;
 }
