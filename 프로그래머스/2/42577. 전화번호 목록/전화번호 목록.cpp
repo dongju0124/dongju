@@ -1,17 +1,22 @@
 #include <string>
 #include <vector>
+#include <map>
 #include <algorithm>
 using namespace std;
 
 bool solution(vector<string> phone_book) {
-   
-    sort(phone_book.begin(), phone_book.end());
+
+    map<string, int> m;
     
-    for(int i=0; i<phone_book.size()-1; i++)
+    for(int i=0; i<phone_book.size(); i++)
     {
-        if(phone_book[i] == phone_book[i+1].substr(0, phone_book[i].size()))
-            return false;
+          m.insert({phone_book[i], 1});
     }
-   
+    
+    for(int i=0;i<phone_book.size();i++)
+        for(int j=0;j<phone_book[i].size()-1;j++)
+            if(m[phone_book[i].substr(0,j+1)]) 
+                return false;
+    
     return true;
 }
