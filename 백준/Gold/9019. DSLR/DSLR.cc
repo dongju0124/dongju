@@ -3,14 +3,11 @@
 #include<string>
 #include<queue>
 
+
 using namespace std;
 
 int Start, End;
 bool Visit[10001];
-
-void Initialize() {
-    memset(Visit, false, sizeof(Visit));
-}
 
 string BFS(int a) {
     queue<pair<int, string>> Q;
@@ -30,7 +27,7 @@ string BFS(int a) {
         if (Visit[nx] == false)
         {
             Visit[nx] = true;
-            Q.push(make_pair(nx, s + "D"));
+            Q.push({ nx, s + "D" });
         }
 
         nx = x - 1;
@@ -38,21 +35,21 @@ string BFS(int a) {
         if (Visit[nx] == false)
         {
             Visit[nx] = true;
-            Q.push(make_pair(nx, s + "S"));
+            Q.push({ nx, s + "S" });
         }
 
         nx = (x % 1000) * 10 + (x / 1000);
         if (Visit[nx] == false)
         {
             Visit[nx] = true;
-            Q.push(make_pair(nx, s + "L"));
+            Q.push({ nx, s + "L" });
         }
 
         nx = (x % 10) * 1000 + (x / 10);
         if (Visit[nx] == false)
         {
             Visit[nx] = true;
-            Q.push(make_pair(nx, s + "R"));
+            Q.push({ nx, s + "R" });
         }
     }
 }
@@ -66,7 +63,7 @@ int main(void) {
     cin >> Tc;
     for (int T = 1; T <= Tc; T++)
     {
-        Initialize();
+        memset(Visit, false, sizeof(Visit));
         cin >> Start >> End;
         string R = BFS(Start);
         cout << R << "\n";
