@@ -2,19 +2,17 @@
 #include<cstring>
 #include<string>
 #include<queue>
-#define endl "\n"
-#define MAX 10000
 
 using namespace std;
 
 int Start, End;
-bool Visit[MAX];
+bool Visit[10001];
 
-void Initialize(){
+void Initialize() {
     memset(Visit, false, sizeof(Visit));
 }
 
-string BFS(int a){
+string BFS(int a) {
     queue<pair<int, string>> Q;
     Q.push(make_pair(a, ""));
     Visit[a] = true;
@@ -59,7 +57,7 @@ string BFS(int a){
     }
 }
 
-int main(void){
+int main(void) {
     ios::sync_with_stdio(false);
     cin.tie(NULL);
     cout.tie(NULL);
@@ -71,7 +69,7 @@ int main(void){
         Initialize();
         cin >> Start >> End;
         string R = BFS(Start);
-        cout << R << endl;
+        cout << R << "\n";
     }
 
     return 0;
