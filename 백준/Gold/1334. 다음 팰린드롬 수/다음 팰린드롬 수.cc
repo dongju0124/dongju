@@ -32,10 +32,6 @@ string getNextPalindrome(string num) {
             nextPalindrome[i] = digit % 10 + '0';
             carry = digit / 10;
         }
-        // 만약 carry가 1이면 팰린드롬이 자리수를 하나 더 늘려야 함
-        if (carry) {
-            nextPalindrome = "1" + string(n - 1, '0') + "1";
-        }
         // 다시 팰린드롬을 만듦
         firstHalf = nextPalindrome.substr(0, (n + 1) / 2);
         secondHalf = firstHalf;
