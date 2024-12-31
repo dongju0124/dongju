@@ -3,10 +3,10 @@
 #include <string>
 using namespace std;
 
-// Function to draw the star pattern recursively
+//  재귀
 void drawStar(vector<string>& pattern, int size, int x, int y) {
     if (size == 3) {
-        // Base case: Draw the smallest star pattern
+        // 별 그리기
         pattern[y][x] = '*';
         pattern[y + 1][x - 1] = '*';
         pattern[y + 1][x + 1] = '*';
@@ -18,23 +18,20 @@ void drawStar(vector<string>& pattern, int size, int x, int y) {
         return;
     }
 
-    int newSize = size / 2; // Halve the size for the recursive calls
-    drawStar(pattern, newSize, x, y); // Top triangle
-    drawStar(pattern, newSize, x - newSize, y + newSize); // Bottom-left triangle
-    drawStar(pattern, newSize, x + newSize, y + newSize); // Bottom-right triangle
+    int newSize = size / 2; // 삼각형 쪼개기
+    drawStar(pattern, newSize, x, y); // 위 삼각형
+    drawStar(pattern, newSize, x - newSize, y + newSize); // 좌하단
+    drawStar(pattern, newSize, x + newSize, y + newSize); // 우하단
 }
 
 int main() {
     int N;
     cin >> N;
 
-    // Initialize the pattern with spaces
     vector<string> pattern(N, string(2 * N - 1, ' '));
 
-    // Draw the star pattern
     drawStar(pattern, N, N - 1, 0);
 
-    // Print the pattern
     for (const string& line : pattern) {
         cout << line << "\n";
     }
